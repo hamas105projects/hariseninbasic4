@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Todo List Lengkap</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</head>
+<body>
+  <div class="todo-container" id="todoContainer">
+    <div class="profile">
+      <img src="invisible-man.png" alt="Foto Profil" />
+      <div class="profile-info">
+        <div class="name">Muhammad Hamas</div>
+        <div class="role">Frontend Developer</div>
+        <div class="date" id="currentDate">📅 02 Oktober 2025</div>
+      </div>
+    </div>
+
+    <h1 id="todoTitle">📋 Todo List</h1>
+
+<form class="todo-form" id="todoForm">
+  <input type="text" placeholder="Tambah tugas..." id="taskInput" />
+
+<div class="date-field">
+  <label for="receiveDate">Tanggal Terima</label>
+  <input type="date" id="receiveDate" name="receiveDate" />
+</div>
+
+<div class="date-field">
+  <label for="deadlineDate">Deadline</label>
+  <input type="date" id="deadlineDate" name="deadlineDate" />
+</div>
+  
+  <div class="priority-buttons" id="priorityButtons">
+    <button class="low" id="priorityLow">Low</button>
+    <button class="medium" id="priorityMedium">Medium</button>
+    <button class="high" id="priorityHigh">High</button>
+  </div>
+  <input type="submit" value="Tambah" id="submitTask" />
+</form>
+
+    <button class="clear-all" id="clearAllBtn">🧹 Hapus Semua Tugas</button>
+
+    <div class="table-wraper">
+    <table id="taskTable">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Tugas</th>
+          <th>Terima</th>
+          <th>Deadline</th>
+          <th>Prioritas</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="taskBody">
+        <!-- <tr>
+          <td>1</td>
+          <td>Contoh tugas pertama</td>
+          <td >02 Okt 2025</td>
+          <td>05 Okt 2025</td>
+          <td><span class="medium">Medium</span></td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-check">✔️</button>
+              <button class="btn btn-delete">🗑️</button>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Contoh tugas kedua</td>
+          <td>01 Okt 2025</td>
+          <td>03 Okt 2025</td>
+          <td><span class="high">High</span></td>
+          <td>
+            <div class="btn-group">
+              <button class="btn btn-check">✔️</button>
+              <button class="btn btn-delete">🗑️</button>
+            </div>
+          </td>
+        </tr> -->
+      </tbody>
+    </table>
+    </div>
+
+<!-- Tombol untuk membuka daftar selesai -->
+<button class="btn-show-finished" id="showFinishedBtn">✅ Done</button>
+
+<!-- Panel daftar tugas selesai (awalnya hidden) -->
+<div class="finished-section" id="finishedSection">
+  <h2>✅ Tugas Selesai</h2>
+  <ul class="finished-list">
+    <!-- isi tabel-->
+  </ul>
+</div>
+
+  </div>
+<script src="module.js"></script>
+</body>
+
+</html>
