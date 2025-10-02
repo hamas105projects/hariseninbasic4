@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let selectedPriority = "";
 
+  // Prioritas tombol
   document.querySelectorAll("#priorityButtons button").forEach(btn => {
     btn.addEventListener("click", e => {
       e.preventDefault();
@@ -25,12 +26,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Submit form
   taskForm.addEventListener("submit", e => {
     e.preventDefault();
     const taskText = taskInput.value.trim();
+    const receiveDate = receiveDateInput.value;
+    const deadlineDate = deadlineDateInput.value;
 
     if (!taskText) {
       alert("⚠️ Tugas tidak boleh kosong. Silakan isi terlebih dahulu.");
+      return;
+    }
+
+    if (!receiveDate) {
+      alert("⚠️ Tanggal terima harus diisi.");
+      return;
+    }
+
+    if (!deadlineDate) {
+      alert("⚠️ Deadline harus diisi.");
       return;
     }
 
@@ -38,9 +52,6 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("⚠️ Silakan pilih prioritas tugas terlebih dahulu.");
       return;
     }
-
-    const receiveDate = receiveDateInput.value || today.toISOString().split("T")[0];
-    const deadlineDate = deadlineDateInput.value || new Date(today.getTime() + 3 * 86400000).toISOString().split("T")[0];
 
     if (new Date(deadlineDate) < new Date(receiveDate)) {
       alert("⚠️ Deadline tidak boleh lebih awal dari tanggal terima.");
@@ -63,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     taskBody.appendChild(row);
 
+    // Reset form
     taskInput.value = "";
     receiveDateInput.value = "";
     deadlineDateInput.value = "";
@@ -70,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("#priorityButtons button").forEach(b => b.classList.remove("active"));
   });
 
+  // Aksi tombol ✔️ dan 🗑️
   taskBody.addEventListener("click", e => {
     if (e.target.classList.contains("btn-check")) {
       const row = e.target.closest("tr");
@@ -86,14 +99,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Hapus semua tugas
   clearAllBtn.addEventListener("click", () => {
     taskBody.innerHTML = "";
   });
 
+  // Tampilkan/semmbunyikan panel selesai
   showFinishedBtn.addEventListener("click", () => {
     finishedSection.classList.toggle("show");
   });
 });
-
-
-
